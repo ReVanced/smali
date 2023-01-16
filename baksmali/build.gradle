@@ -73,13 +73,13 @@ tasks.getByPath('build').dependsOn(fatJar)
 
 publish {
     publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                pom {
-                    description = 'baksmali is a disassembler for dalvik bytecode'
-                    scm {
-                        url = 'https://github.com/JesusFreke/smali/tree/master/baksmali'
-                    }
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/revanced/smali")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                 }
             }
         }

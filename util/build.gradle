@@ -39,13 +39,13 @@ dependencies {
 
 publish {
     publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                pom {
-                    description = 'This library contains random utilities used by smali/baksmali/dexlib2'
-                    scm {
-                        url = 'https://github.com/JesusFreke/smali/tree/master/util'
-                    }
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/revanced/smali")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                 }
             }
         }

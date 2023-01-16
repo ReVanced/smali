@@ -95,13 +95,13 @@ task generateAccessorTestDex(type: JavaExec, dependsOn: compileAccessorTestJava)
 
 publish {
     publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                pom {
-                    description = 'dexlib2 is a library for reading/modifying/writing Android dex files'
-                    scm {
-                        url = 'https://github.com/JesusFreke/smali/tree/master/dexlib2'
-                    }
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/revanced/smali")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                 }
             }
         }
