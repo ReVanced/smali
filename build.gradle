@@ -115,7 +115,7 @@ subprojects {
         apply plugin: 'maven-publish'
         apply plugin: 'signing'
 
-        group = 'org.smali'
+        group = 'app.revanced'
 
         publishing {
             publications {
